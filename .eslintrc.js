@@ -3,6 +3,12 @@ module.exports = {
 
   extends: ['@metamask/eslint-config'],
 
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+  },
+
   overrides: [
     {
       files: ['*.ts'],
@@ -43,6 +49,7 @@ module.exports = {
   ignorePatterns: [
     '!.eslintrc.js',
     '!.prettierrc.js',
+    '.eslintrc.js',
     'dist/',
     'docs/',
     '.yarn/',
