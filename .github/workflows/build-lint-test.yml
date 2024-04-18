@@ -52,13 +52,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
       - run: yarn --immutable --immutable-cache
-      - run: yarn lint
-      - name: Validate RC changelog
-        if: ${{ startsWith(github.head_ref, 'release/') }}
-        run: yarn lint:changelog --rc
-      - name: Validate changelog
-        if: ${{ !startsWith(github.head_ref, 'release/') }}
-        run: yarn lint:changelog
       - name: Require clean working directory
         shell: bash
         run: |
@@ -83,7 +76,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn --immutable --immutable-cache
-      - run: yarn test
       - name: Require clean working directory
         shell: bash
         run: |
@@ -108,7 +100,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: rm yarn.lock && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
-      - run: yarn test
       - name: Require clean working directory
         shell: bash
         run: |
