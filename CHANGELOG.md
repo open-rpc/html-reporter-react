@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2]
+
+### Uncategorized
+
+- Fixed node version for build test
+- Fixed yml issue
+- Fixed workflows
+- 0.0.1
+- Fixed yarn lock
+- Removed some required workflow secrets
+- Removed some workflow stuff
+- Fixed workflow issue with docs
+- Added note in README about example report + fix package.json names
+- fix: remove unused import
+- fix: remove unused workflows
+- fix: dont lint or test in pr for now
+- Initial Commit
+- Initial Commit
+- Add status badge
+- Add dotfiles
+- First commit
+
 ## [0.0.1]
 
 ### Uncategorized
@@ -206,5 +228,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add dotfiles
 - First commit
 
-[Unreleased]: https://github.com/open-rpc/html-reporter-react/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/open-rpc/html-reporter-react/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/open-rpc/html-reporter-react/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/open-rpc/html-reporter-react/releases/tag/v0.0.1

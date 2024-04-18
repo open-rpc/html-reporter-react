@@ -1,6 +1,6 @@
 {
   "name": "@open-rpc/html-reporter-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A react app for rendering @open-rpc/test-coverage reports",
   "homepage": "https://github.com/open-rpc/html-reporter-react",
   "bugs": {
