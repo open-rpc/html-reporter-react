@@ -11,7 +11,6 @@ import {
   Title,
 } from '@mantine/core';
 import ListItemCard from './ListItemCard';
-import report from './report.json';
 import DisplayTimeInSeconds from './DisplayTimeInSeconds';
 import { useLocation, useSearch } from 'wouter';
 import { ReportStats } from './ReportStats';
