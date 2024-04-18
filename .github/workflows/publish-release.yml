@@ -1,6 +1,47 @@
 name: Publish Release
 
 on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  publish-release:
+    permissions:
+      contents: write
+    # The second argument to startsWith() must match the release-branch-prefix
+    # input to this Action. Here, we use the default, "release/".
+    if: |
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Node.js version
+        id: nvm
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+      - uses: MetaMask/action-publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: yarn --frozen-lockfile
+      - name: Get release version
+        id: version
+        run: |
+          PREFIX='release/'
+          echo ::set-output name=NEW_VERSION::${GITHUB_HEAD_REF#"$PREFIX"}
+      - run: yarn build
+    # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+on:
   workflow_call:
     secrets:
       NPM_TOKEN:
@@ -48,14 +89,7 @@ jobs:
             ./dist
             ./node_modules/.yarn-state.yml
           key: ${{ github.sha }}
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 
   get-release-version:
     runs-on: ubuntu-latest

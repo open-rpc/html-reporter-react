@@ -20,9 +20,7 @@
     "./package.json": "./package.json"
   },
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/types/index.d.ts",
+  "main": "./dist/index.html",
   "files": [
     "dist"
   ],
