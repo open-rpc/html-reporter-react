@@ -50,6 +50,7 @@ module.exports = {
     '!.eslintrc.js',
     '!.prettierrc.js',
     '.eslintrc.js',
+    'postcss.config.cjs',
     'dist/',
     'docs/',
     '.yarn/',

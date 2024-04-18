@@ -1,26 +1,30 @@
-import { useState } from 'react'
+import 'react';
+import { createTheme, MantineProvider } from '@mantine/core';
+import { Route, Switch, Router } from 'wouter';
+import { useHashLocation } from "wouter/use-hash-location";
+import Home from './Home';
+import Details from './Details';
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is potato {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router hook={useHashLocation}>
+        <MantineProvider theme={theme}>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/details/:id" component={Details} />
+
+            {/* Default route in a switch */}
+            <Route>404: No such page!</Route>
+          </Switch>
+        </MantineProvider>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
