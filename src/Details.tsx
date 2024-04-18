@@ -23,7 +23,7 @@ const Details = () => {
   const [report, setReport] = useState<any[]>([]);
   const [item, setItem] = useState<any>();
   const [match, params] = useRoute('/details/:id');
-  const reportUrl = import.meta.env.REPORT_URL.startsWith('http') ? import.meta.env.REPORT_URL : import.meta.env.BASE_URL + import.meta.env.REPORT_URL;
+  const reportUrl = import.meta.env.REPORT_URL?.startsWith('http') ? import.meta.env.REPORT_URL : import.meta.env.BASE_URL + import.meta.env.REPORT_URL;
   const searchString = useSearch();
   // get reporturl from search params
   const searchParams = new URLSearchParams(searchString);
