@@ -76,14 +76,14 @@ jobs:
             ./dist
             ./node_modules/.yarn-state.yml
           key: ${{ github.sha }}
-      - name: Publish
-        uses: MetaMask/action-npm-publish@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
         with:
-          # This `NPM_TOKEN` needs to be manually set per-repository.
-          # Look in the repository settings under "Environments", and set this token in the `npm-publish` environment.
-          npm-token: ${{ secrets.NPM_TOKEN }}
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish
         env:
-          SKIP_PREPACK: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   get-release-version:
     runs-on: ubuntu-latest
