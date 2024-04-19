@@ -11,16 +11,8 @@
     "url": "https://github.com/open-rpc/html-reporter-react.git"
   },
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
   "type": "module",
-  "main": "./dist/index.html",
+  "main": "./dist/index.js",
   "files": [
     "dist"
   ],
