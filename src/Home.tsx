@@ -49,7 +49,8 @@ const Home = () => {
   const [location, setLocation] = useLocation();
   const [report, setReport] = useState<any[]>([]);
   const searchString = useSearch();
-  const reportUrl = import.meta.env.REPORT_URL.startsWith('http') ? import.meta.env.REPORT_URL : import.meta.env.BASE_URL + import.meta.env.REPORT_URL;
+  const rUrl = import.meta.env.REPORT_URL;
+  const reportUrl = rUrl?.startsWith('http') ? import.meta.env.REPORT_URL : import.meta.env.BASE_URL + import.meta.env.REPORT_URL;
   const searchParams = new URLSearchParams(searchString);
   const reportUrlFromSearchParams = searchParams.get('reporturl');
 
